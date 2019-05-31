@@ -14,7 +14,6 @@ class EmployeeList extends Component {
 
   componentDidMount() {
     this.props.getEmployeesList((res) => {
-      console.log('resss', res);
       if (res.status === 200) {
         this.setState({
           visibleEmployees: res.data,
@@ -31,7 +30,6 @@ class EmployeeList extends Component {
           this.state.visibleEmployees.map((emp, i) => {
             return (
               <tr key={emp.id} onClick={() => this.props.history.push(`/employee-details/${emp.id}`)}>
-                {/* <th scope="row">{i + 1}</th> */}
                 <td>{emp.name}</td>
               </tr>
             )
