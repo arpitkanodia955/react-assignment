@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getEmployee } from '../actions/index';
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
+  Card, CardImg, CardBody,
+  CardTitle, Button
 } from 'reactstrap';
 
 class EmployeeDetails extends Component {
@@ -27,12 +27,12 @@ class EmployeeDetails extends Component {
   }
   render() {
     var employeeDetail = this.state.employeeDetail;
-    const defaultUrl = 'https://www.ibts.org/wp-content/uploads/2017/08/iStock-476085198.jpg';
     return (
       <div >
+        <h3>Profile</h3>
         <div className="card-custom">
           <Card>
-            <CardImg top width="10%" className="custom-image" height="100px" src={employeeDetail.profileImage !== '' ? employeeDetail.profileImage : defaultUrl} alt="profile-image" />
+            <CardImg top width="10%" className="custom-image" height="100px" src={employeeDetail.profileImage} alt="profile-image" />
             <CardBody>
               <div className="main">
                 <div className="name" >Name: </div>
@@ -55,7 +55,7 @@ class EmployeeDetails extends Component {
                 </CardTitle>
               </div>
 
-              <Button onClick={() => this.props.history.push('/') }>Back</Button>
+              <Button onClick={() => this.props.history.push('/')}>Back</Button>
             </CardBody>
           </Card>
         </div>

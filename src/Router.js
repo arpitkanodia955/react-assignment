@@ -1,8 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import EmployeeList from "./components/EmployeeList";
-import EmployeeDetails from "./components/EmployeeDetails";
-
+const EmployeeList = React.lazy(() => import("./components/EmployeeList"));
+const EmployeeDetails = React.lazy(() => import("./components/EmployeeDetails"));
 
 /**
  * @name customRoutes
@@ -12,11 +11,13 @@ import EmployeeDetails from "./components/EmployeeDetails";
 const customRoutes = (props) => {
     return (
         <BrowserRouter>
-            <Switch>
-                <Route exact path='/' component={EmployeeList} />
-                <Route path='/employee-details/:id' component={EmployeeDetails} />
+            <Suspense fallback={<h2>Product list is loading...</h2>}>
+                <Switch>
+                    <Route exact path='/' component={EmployeeList} />
+                    <Route path='/employee-details/:id' component={EmployeeDetails} />
 
-            </Switch>
+                </Switch>
+            </Suspense>
         </BrowserRouter>
     )
 }
