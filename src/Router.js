@@ -1,5 +1,8 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import EmployeeList from "./components/EmployeeList";
+import EmployeeDetails from "./components/EmployeeDetails";
+
 
 /**
  * @name customRoutes
@@ -8,9 +11,13 @@ import { Route, Switch } from "react-router-dom";
  */
 const customRoutes = (props) => {
     return (
-        <Switch>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path='/' component={EmployeeList} />
+                <Route path='/employee-details/:id' component={EmployeeDetails} />
 
-        </Switch>
+            </Switch>
+        </BrowserRouter>
     )
 }
 
